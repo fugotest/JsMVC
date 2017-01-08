@@ -24,9 +24,14 @@ namespace webapiDay1.Controllers
         }
         // GET: api/Clients
         [Route("")]
-        public IQueryable<Client> GetClient()
+        [ResponseType(typeof(IQueryable<Client>))]
+        public IHttpActionResult GetClient()
         {
-            return db.Client;
+            if (!Request.IsLocal())
+            {
+
+            }
+            return Ok(db.Client);
         }
 
         // GET: api/Clients/5
