@@ -25,14 +25,23 @@ namespace webapiDay1.Controllers
         // GET: api/Clients
         [Route("")]
         [ResponseType(typeof(IQueryable<Client>))]
-        public IHttpActionResult GetClient()
+        public HttpResponseMessage GetClient()
         {
             if (!Request.IsLocal())
             {
-
+                var msg = new HttpResponseMessage()
+                {
+                    ReasonPhrase = "hahaha" //這個是回傳200 的時候 後面的 OK 字 ，現在改成 hahaha
+                };
+                //return Request.CreateResponse<IQueryable<Client>>(HttpStatusCode.NotFound, null);
+                return msg;
+            }else{
+                 return Request.CreateResponse<IQueryable<Client>>(db.Client);
             }
-            return Ok(db.Client);
         }
+
+           
+            
 
         // GET: api/Clients/5
         [Route("{id:int}")]
