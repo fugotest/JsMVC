@@ -4,12 +4,23 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Security;
 
 namespace webapiDay1.Controllers
 {
     [Authorize]
     public class ValuesController : ApiController
     {
+
+
+
+        public IHttpActionResult Login(string username, string password)
+        {
+            
+            FormsAuthentication.RedirectFromLoginPage(username, false);
+            return StatusCode(HttpStatusCode.NoContent);
+
+        }
         // GET api/values
         public IEnumerable<string> Get()
         {

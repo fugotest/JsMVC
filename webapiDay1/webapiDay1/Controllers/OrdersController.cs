@@ -22,8 +22,10 @@ namespace webapiDay1.Controllers
             return point;
         }
 
+        [Authorize]
+        [ValidateModel]
         [Route("geo")]
-        public GeoPoint Post(GeoPoint point)
+        public GeoPoint Post([FromBody] GeoPoint point)
         {
 
             return point;
@@ -36,6 +38,7 @@ namespace webapiDay1.Controllers
             return db.Order;
         }
 
+        [ValidateModel]
         // GET: api/Orders/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder([FromUri] int id)

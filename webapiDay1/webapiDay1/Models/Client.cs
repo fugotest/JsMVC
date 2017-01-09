@@ -9,9 +9,10 @@
 
 namespace webapiDay1.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -36,6 +37,7 @@ namespace webapiDay1.Models
         public string ZipCode { get; set; }
         public Nullable<double> Longitude { get; set; }
         public Nullable<double> Latitude { get; set; }
+        [JsonIgnore]
         public string Notes { get; set; }
     
         public virtual Occupation Occupation { get; set; }
